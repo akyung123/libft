@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:%.c=%.o)
-HEADERS = libft.h libft_bonus.h
+HEADERS = libft.h
 INCLUDES= -I.
 
 TARGET = libft.a

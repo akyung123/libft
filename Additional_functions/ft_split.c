@@ -6,12 +6,12 @@
 /*   By: akkim <2004924@donga.ac.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:32:46 by akkim             #+#    #+#             */
-/*   Updated: 2025/04/07 17:25:41 by akkim            ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:00 by akkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	count_word(char	const *s, char c)
+static int	count_word(char	const *s, char c)
 {
 	int	count;
 	int	i;
@@ -32,7 +32,7 @@ int	count_word(char	const *s, char c)
 	return (count);
 }
 
-int	len_word(char *s, char c)
+static int	len_word(char *s, char c)
 {
 	int	len;
 
