@@ -37,31 +37,47 @@ static int	len_word(char *s, char c)
 	int	len;
 
 	len = 0;
-	while (s[len] != c)
+	while (s[len] && s[len] != c)
 		len++;
-	return (len + 1);
+	return (len);
+}
+
+static char	**free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free (str);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
-	char	*s_p;
 	int		i;
 	int		j;
-	int		len;
+	int		words;
 
-	str = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
+	words = count_word(s, c);
+	str = (char **)malloc((words + 1) * sizeof(char *));
+	if (!str)
+		return (NULL);
 	i = 0;
-	s_p = (char *)s;
-	while (i < count_word(s, c))
+	while (*s && i < words)
 	{
-		len = len_word(s_p, c);
-		str[i] = (char *)malloc(len * sizeof(char));
+		while (*s == c)
+			s++;
+		str[i] = (char *)malloc((len_word((char *)s, c) + 1) * sizeof(char));
 		if (!str[i])
-			return (NULL);
+			return (free_split(str));
 		j = 0;
-		while (*s_p != c && *s_p)
-			str[i][j++] = *s_p++;
+		while (*s != c && *s)
+			str[i][j++] = *s++;
 		str[i][j] = '\0';
 		i++;
 	}

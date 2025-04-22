@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: akkim <2004924@donga.ac.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 04:23:39 by akkim             #+#    #+#             */
-/*   Updated: 2025/04/14 04:23:44 by akkim            ###   ########.fr       */
+/*   Created: 2025/04/01 13:39:21 by akkim             #+#    #+#             */
+/*   Updated: 2025/04/01 13:45:30 by akkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-#include "libft_bonus.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+char	*ft_strchr(const char *str, int ch)
 {
-	if (!lst || !new)
-		return ;
-	if (*lst)
-		new->next = *lst;
-	else
-		new->next = NULL;
-	*lst = new;
+	char	*p;
+
+	p = (char *)str;
+	while (*p)
+	{
+		if (*p == (unsigned char)ch)
+			return (p);
+		p++;
+	}
+	if ((unsigned char)ch == '\0')
+		return (p);
+	return (NULL);
 }

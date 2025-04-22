@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: akkim <2004924@donga.ac.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 04:24:14 by akkim             #+#    #+#             */
-/*   Updated: 2025/04/14 04:24:15 by akkim            ###   ########.fr       */
+/*   Created: 2025/04/01 20:37:32 by akkim             #+#    #+#             */
+/*   Updated: 2025/04/01 21:02:25 by akkim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-#include "libft_bonus.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_list	*last;
+	char	*str;
+	size_t	x;
 
-	last = lst;
-	if (!lst)
+	x = size * nmemb;
+	if (__builtin_expect(size && ((x / size) != nmemb), 0))
 		return (NULL);
-	while (last->next)
-		last = last->next;
-	return (last);
+	str = malloc(nmemb * size);
+	if (!str)
+		return ((void *)0);
+	ft_bzero (str, nmemb * size);
+	return (str);
 }

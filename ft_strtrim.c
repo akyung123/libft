@@ -14,8 +14,8 @@
 static int	ch_set(char ch, char const *set)
 {
 	size_t	i;
-	
-	i =  0;
+
+	i = 0;
 	while (set[i])
 	{
 		if (ch == set[i])
@@ -24,7 +24,7 @@ static int	ch_set(char ch, char const *set)
 	}
 	return (0);
 }
-	
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
@@ -37,10 +37,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (ch_set(s1[start], set))
 		start++;
-	while (ch_set(s1[end-1], set) && end > start)
+	while (ch_set(s1[end - 1], set) && end > start)
 		end--;
-	str = (char *)malloc(end -start + 1);
+	str = (char *)malloc(end - start + 1);
+	if (!str)
+		return (NULL);
 	ft_strlcpy(str, s1 + start, end - start + 1);
-	str[end- start] = '\0';
+	str[end - start] = '\0';
 	return (str);
 }
